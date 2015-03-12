@@ -1,0 +1,11 @@
+PROJECT_NAME           = "AASTL"
+OUTPUT_DIRECTORY       = docs
+ALIASES                = complexity="\par Complexity\n" requires="\par Requires\n" effects="\par Effects\n"
+INPUT                  = include docs/input
+FILE_PATTERNS          = *.hpp *.h *.cpp *.c *.dox
+RECURSIVE              = YES
+TOC_EXPAND             = YES
+OPTIMIZE_OUTPUT_FOR_C  = YES
+BUILTIN_STL_SUPPORT    = YES
+ENABLE_PREPROCESSING   = YES
+PREDEFINED             = AASTL_NO_VERSIONING

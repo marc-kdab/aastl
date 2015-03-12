@@ -1,0 +1,27 @@
+/*!
+    \defgroup iota
+
+    The iota familiy of algorithms assigns an increasing value to a range.
+*/
+
+namespace aastl {
+
+/*!
+    \fn OutputIterator iota_n(OutputIterator first, Size count, T value)
+    \ingroup iota
+
+    \requires `T` shall be convertible to `OutputIterator`'s value type. The expression `++value`,
+    where `value` has type `T`, shall be well-formed.
+
+    \pre `[first, count)` is a valid range.
+
+    \effects For each non-negative integer `i < count`, performs `*(first + i) = (value + i)`.
+
+    \returns `first + count`
+
+    \complexity Exactly \a count assignments, \a count applications of `++first`,
+    and \a count applications of `++value`.
+*/
+
+
+}

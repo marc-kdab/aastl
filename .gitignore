@@ -3,3 +3,5 @@
 *.o
 Makefile*
 *.pro.user
+docs/html
+docs/latex
