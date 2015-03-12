@@ -1,0 +1,5 @@
+Suffixes, in the order in which they are applied to the main algorithm name:
+
+_xform - performs a step with op(*first) instead of *first
+_if    - performs a step only if pred(*first) is true
+_n     - counted instead of bounded range
