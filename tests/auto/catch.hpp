@@ -1179,6 +1179,11 @@ std::string toString( char value );
 std::string toString( signed char value );
 std::string toString( unsigned char value );
 
+template <typename T1, typename T2>
+std::string toString( std::pair<T1, T2> const& p ) {
+    return "{ " + toString(p.first) + ", " + toString(p.second) + " }";
+}
+
 #ifdef CATCH_CONFIG_CPP11_NULLPTR
 std::string toString( std::nullptr_t );
 #endif
