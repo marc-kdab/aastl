@@ -1,0 +1,116 @@
+/*!
+    \defgroup separate
+
+    The `separate` familiy of algorithms copies items from an input range and puts them
+    into one of two output ranges, depending on a predicate.
+*/
+
+namespace aastl {
+
+/*!
+    \class separate_if_result
+    \ingroup separate
+
+    Represents the result of a separate_if() call.
+*/
+
+/*!
+    \var separate_if_result::matched_end
+
+    The end point of the range containing the elements of the input range
+    that matched the predicate passed to separate_if.
+*/
+
+/*!
+    \var separate_if_result::unmatched_end
+
+    The end point of the range containing the elements of the input range
+    that did not match the predicate passed to separate_if.
+*/
+
+
+
+
+/*!
+    \fn separate_if(InputIterator first, InputIterator last, OutputIterator1 dest1, OutputIterator2 dest2, UnaryPredicate p)
+    \ingroup separate
+
+    \requires `InputIterator`'s value type shall be convertible to `OutputIterator1`'s value type,
+    `OutputIterator2`'s value type, and `Predicate`'s argument type.
+
+    \pre `[first, last)` is a valid range. \a dest1 and \a dest2 hold enough space to receive
+    the expected number of elements (up to the maximum of `last - first`).
+
+    \effects Copies each element referred to by iterator `i` in the range `[first, last)`
+    to `*dest1++`, if `p(*i) == true` or to `*dest2++`, if `p(*i) == false`.
+
+    \returns `{ dest1, dest2 }`
+
+    \complexity Exactly `last - first` assignments, applications of \a p, increments of \a first,
+    and, in sum, increments of \a dest1 or \a dest2.
+
+    \note \a dest1 \e or \a dest2 may equal \a first, but not both:
+    `separate_if(first, last, first, dest2, p)` then acts as a simultaneous
+    `keep_if(first, last, p)` / `remove_copy_if(first, last, dest2, p)`, while
+    `separate_if(first, last, dest1, first, p)` acts as a simultaneous
+    `remove_if(first, last, p)` / `copy_if(first, last, dest1, p)`.
+*/
+
+
+/*!
+    \class separate_if_n_result
+    \ingroup separate
+
+    Represents the result of a separate_if_n() call.
+*/
+
+/*!
+    \var separate_if_n_result::end
+
+    The end point of the forward iterator passed to separate_if().
+*/
+
+/*!
+    \var separate_if_n_result::matched_end
+
+    The end point of the range containing the elements of the input range
+    that matched the predicate passed to separate_if().
+*/
+
+/*!
+    \var separate_if_n_result::unmatched_end
+
+    The end point of the range containing the elements of the input range
+    that did not match the predicate passed to separate_if().
+*/
+
+
+
+/*!
+    \fn separate_if_n(InputIterator first, Size count, OutputIterator1 dest1, OutputIterator2 dest2, UnaryPredicate p)
+    \ingroup separate
+
+    \requires `InputIterator`'s value type shall be convertible to `OutputIterator1`'s value type,
+    `OutputIterator2`'s value type, and `Predicate`'s argument type.
+
+    \pre `[first, count)` is a valid range. \a dest1 and \a dest2 hold enough space to receive
+    the expected number of elements (up to the maximum of \a count).
+
+    \effects Copies each element referred to by iterator `i` in the range `[first, count)`
+    to `*dest1++`, if `p(*i) == true` or to `*dest2++`, if `p(*i) == false`.
+
+    \returns `{ first + count, dest1, dest2 }`
+
+    \complexity Exactly \a count assignments, applications of \a p, increments of \a first,
+    and, in sum, increments of \a dest1 or \a dest2.
+
+    \note \a dest1 \e or \a dest2 may equal \a first, but not both:
+    `separate_if_n(first, count, first, dest2, p)` then acts as a simultaneous
+    `keep_if_n(first, count, p)` / `remove_copy_if_n(first, count, dest2, p)`, while
+    `separate_if_n(first, count, dest1, first, p)` acts as a simultaneous
+    `remove_if_n(first, count, p)` / `copy_if_n(first, count, dest1, p)`.
+*/
+
+
+}
+
