@@ -33,6 +33,7 @@ namespace aastl {
 
 /*!
     \fn separate_if(InputIterator first, InputIterator last, OutputIterator1 dest1, OutputIterator2 dest2, UnaryPredicate p)
+    \fn separate_if_not(InputIterator first, InputIterator last, OutputIterator1 dest1, OutputIterator2 dest2, UnaryPredicate p)
     \ingroup separate
 
     \requires `InputIterator`'s value type shall be convertible to `OutputIterator1`'s value type,
@@ -41,8 +42,10 @@ namespace aastl {
     \pre `[first, last)` is a valid range. \a dest1 and \a dest2 hold enough space to receive
     the expected number of elements (up to the maximum of `last - first`).
 
-    \effects Copies each element referred to by iterator `i` in the range `[first, last)`
-    to `*dest1++`, if `p(*i) == true` or to `*dest2++`, if `p(*i) == false`.
+    \effects separate_if() copies each element referred to by iterator `i` in the range
+    `[first, last)` to `*dest1++`, if `p(*i) == true`, or to `*dest2++`, if `p(*i) == false`.
+    `separate_if_not(f, l, d1, d2, p)` is the same as `separate_if(f, l, d2, d2, p)`, ie. the
+    output ranges are exchanged.
 
     \returns `{ dest1, dest2 }`
 
@@ -87,7 +90,9 @@ namespace aastl {
 
 
 /*!
+    @{
     \fn separate_if_n(InputIterator first, Size count, OutputIterator1 dest1, OutputIterator2 dest2, UnaryPredicate p)
+    \fn separate_if_not_n(InputIterator first, Size count, OutputIterator1 dest1, OutputIterator2 dest2, UnaryPredicate p)
     \ingroup separate
 
     \requires `InputIterator`'s value type shall be convertible to `OutputIterator1`'s value type,
@@ -96,8 +101,10 @@ namespace aastl {
     \pre `[first, count)` is a valid range. \a dest1 and \a dest2 hold enough space to receive
     the expected number of elements (up to the maximum of \a count).
 
-    \effects Copies each element referred to by iterator `i` in the range `[first, count)`
-    to `*dest1++`, if `p(*i) == true` or to `*dest2++`, if `p(*i) == false`.
+    \effects separate_if_n() copies each element referred to by iterator `i` in the range
+    `[first, count)` to `*dest1++`, if `p(*i) == true`, or to `*dest2++`, if `p(*i) == false`.
+    `separate_if_not_n(l, c, d1, d2, p)` is the same as `separate_if_n(l, c, d2, d1, p)`, ie. the
+    output ranges are exchanged.
 
     \returns `{ first + count, dest1, dest2 }`
 
@@ -109,6 +116,7 @@ namespace aastl {
     `keep_if_n(first, count, p)` / `remove_copy_if_n(first, count, dest2, p)`, while
     `separate_if_n(first, count, dest1, first, p)` acts as a simultaneous
     `remove_if_n(first, count, p)` / `copy_if_n(first, count, dest1, p)`.
+    @}
 */
 
 
