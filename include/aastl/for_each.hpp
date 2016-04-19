@@ -16,6 +16,80 @@ namespace aastl {
             Function function;
         };
 
+        template <typename InputIterator, typename UnaryFunction>
+        UnaryFunction for_each(InputIterator first, InputIterator last, UnaryFunction f)
+        {
+            // C++98 version is ok:
+            return std::for_each(first, last, f);
+        }
+
+        template <typename InputIterator, typename Size, typename UnaryFunction>
+        for_each_n_result<InputIterator, UnaryFunction>
+        for_each_n(InputIterator first, Size count, UnaryFunction f)
+        {
+            // cannot use the C++17 version, because it fails to return 'f':
+            const Size zero = 0;
+            while (count > zero) {
+                f(*first);
+                ++first;
+                --count;
+            }
+            return { first, f };
+        }
+
+        template <typename InputIterator, typename UnaryFunction, typename UnaryPredicate>
+        UnaryFunction
+        for_each_if(InputIterator first, InputIterator last, UnaryFunction f, UnaryPredicate p)
+        {
+            while (first != last) {
+                if (p(*first))
+                    f(*first);
+                ++first;
+            }
+            return f;
+        }
+
+
+        template <typename InputIterator, typename Size, typename UnaryFunction, typename UnaryPredicate>
+        for_each_n_result<InputIterator, UnaryFunction>
+        for_each_if_n(InputIterator first, Size count, UnaryFunction f, UnaryPredicate p)
+        {
+            const Size zero = 0;
+            while (count > zero) {
+                if (p(*first))
+                    f(*first);
+                ++first;
+                --count;
+            }
+            return { first, f };
+        }
+
+        template <typename InputIterator, typename UnaryFunction, typename UnaryPredicate>
+        UnaryFunction
+        for_each_if_not(InputIterator first, InputIterator last, UnaryFunction f, UnaryPredicate p)
+        {
+            while (first != last) {
+                if (!p(*first))
+                    f(*first);
+                ++first;
+            }
+            return f;
+        }
+
+        template <typename InputIterator, typename Size, typename UnaryFunction, typename UnaryPredicate>
+        for_each_n_result<InputIterator, UnaryFunction>
+        for_each_if_not_n(InputIterator first, Size count, UnaryFunction f, UnaryPredicate p)
+        {
+            const Size zero = 0;
+            while (count > zero) {
+                if (!p(*first))
+                    f(*first);
+                ++first;
+                --count;
+            }
+            return { first, f };
+        }
+
         namespace impl {
 
         template <typename InputIterator, typename BinaryFunction>
