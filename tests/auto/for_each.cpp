@@ -103,6 +103,13 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         const std::vector<double> v = input;
 
+        SECTION("negative count") {
+            const auto result = aastl::for_each_adjacent_n(v.begin(), -1, binary_function);
+
+            REQUIRE(output.empty());
+            REQUIRE(result.end == v.begin());
+        }
+
         SECTION("empty range") {
             const auto result = aastl::for_each_adjacent_n(v.begin(), 0U, binary_function);
 

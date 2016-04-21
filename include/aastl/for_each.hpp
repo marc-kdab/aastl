@@ -34,7 +34,7 @@ namespace aastl {
         {
             const Size zero = 0;
             ForwardIterator prev = first;
-            if (count) {
+            if (count > zero) {
                 ++first;
                 --count;
                 while (count > zero) {
