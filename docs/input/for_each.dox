@@ -15,10 +15,10 @@
 namespace aastl {
 
 /*!
-    \fn BinaryFunction for_each_adjacent(ForwardIterator first, ForwardIterator last, BinaryFunction f)
+    \fn BinaryFunction for_each_adjacent(InputIterator first, InputIterator last, BinaryFunction f)
     \ingroup for_each_adjacent
 
-    \requires `ForwardIterator`'s value type shall be convertible to `BinaryFunction`'s argument
+    \requires `InputIterator`'s value type shall be convertible to `BinaryFunction`'s argument
     types.
 
     \pre `[first, last)` is a valid range.
@@ -29,7 +29,8 @@ namespace aastl {
     \returns `f`
 
     \complexity Exactly `max((last - first) - 1, 0)` applications of `f` and `(last - first)`
-    applications of `++first`.
+    applications of `++first`. Unless `InputIterator` models `ForwardIterator`, also performs
+    `max((last - first) - 1, 0)` copies of `InputIterator`'s value type.
 */
 
 /*!
@@ -52,10 +53,10 @@ namespace aastl {
 */
 
 /*!
-    \fn for_each_adjacent_n(ForwardIterator first, Size count, BinaryFunction f)
+    \fn for_each_adjacent_n(InputIterator first, Size count, BinaryFunction f)
     \ingroup for_each_adjacent
 
-    \requires `ForwardIterator`'s value type shall be convertible to `BinaryFunction`'s argument
+    \requires `InputIterator`'s value type shall be convertible to `BinaryFunction`'s argument
     types.
 
     \pre `[first, count)` is a valid range.
@@ -66,7 +67,8 @@ namespace aastl {
     \returns `{ first + size, f }`
 
     \complexity Exactly `max(count - 1, 0)` applications of `f` and `count`
-    applications of `++first`.
+    applications of `++first`. Unless `InputIterator` models `ForwardIterator`, also performs
+    `max(count - 1, 0)` copies of `InputIterator`'s value type.
 */
 
 
