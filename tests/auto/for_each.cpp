@@ -105,6 +105,8 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         SECTION("negative count") {
             const auto result = aastl::for_each_adjacent_n(v.begin(), -1, binary_function);
+            const decltype(binary_function) f = result.function;
+            (void)f;
 
             REQUIRE(output.empty());
             REQUIRE(result.end == v.begin());
@@ -112,6 +114,8 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         SECTION("empty range") {
             const auto result = aastl::for_each_adjacent_n(v.begin(), 0U, binary_function);
+            const decltype(binary_function) f = result.function;
+            (void)f;
 
             REQUIRE(output.empty());
             REQUIRE(result.end == v.begin());
@@ -119,6 +123,8 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         SECTION("range of just one element") {
             const auto result = aastl::for_each_adjacent_n(v.begin(), 1, binary_function);
+            const decltype(binary_function) f = result.function;
+            (void)f;
 
             REQUIRE(output.empty());
             REQUIRE(result.end == v.begin() + 1);
@@ -126,6 +132,8 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         SECTION("range of two elements") {
             const auto result = aastl::for_each_adjacent_n(v.begin(), 2, binary_function);
+            const decltype(binary_function) f = result.function;
+            (void)f;
 
             const decltype(output) expected = {{0.0, 1.5}};
 
@@ -135,6 +143,8 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         SECTION("general range") {
             const auto result = aastl::for_each_adjacent_n(v.begin(), v.size(), binary_function);
+            const decltype(binary_function) f = result.function;
+            (void)f;
 
             const decltype(output) expected = {{0.0, 1.5}, {1.5, 3.0}, {3.0, 4.5}};
 
@@ -150,6 +160,8 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         SECTION("empty range") {
             const auto result = aastl::for_each_adjacent_n(l.begin(), 0, binary_function);
+            const decltype(binary_function) f = result.function;
+            (void)f;
 
             REQUIRE(output.empty());
             REQUIRE(result.end == l.begin());
@@ -157,6 +169,8 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         SECTION("range of just one element") {
             const auto result = aastl::for_each_adjacent_n(l.begin(), 1, binary_function);
+            const decltype(binary_function) f = result.function;
+            (void)f;
 
             REQUIRE(output.empty());
             REQUIRE(result.end == ++l.begin());
@@ -164,6 +178,8 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         SECTION("range of two elements") {
             const auto result = aastl::for_each_adjacent_n(l.begin(), 2, binary_function);
+            const decltype(binary_function) f = result.function;
+            (void)f;
 
             const decltype(output) expected = {{0.0, 1.5}};
 
@@ -173,6 +189,8 @@ TEST_CASE("for_each_adjacent_n basics", "[for_each][for_each_adjacent]") {
 
         SECTION("general range") {
             const auto result = aastl::for_each_adjacent_n(l.begin(), l.size(), binary_function);
+            const decltype(binary_function) f = result.function;
+            (void)f;
 
             const decltype(output) expected = {{0.0, 1.5}, {1.5, 3.0}, {3.0, 4.5}};
 
