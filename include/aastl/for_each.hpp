@@ -33,8 +33,8 @@ namespace aastl {
         for_each_adjacent_n(ForwardIterator first, Size count, BinaryFunction f)
         {
             const Size zero = 0;
-            ForwardIterator prev = first;
             if (count > zero) {
+                ForwardIterator prev = first;
                 ++first;
                 --count;
                 while (count > zero) {
